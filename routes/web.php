@@ -27,8 +27,13 @@ Route::resource('/posts','PostController');
 Route::resource('/blogs','BlogController');
 Route::get('/blogs/toggleStat/{id}', 'BlogController@toggleStat');
 
+Route::resource('/gifts','GiftController');
+Route::get('/gifts/toggleStat/{id}', 'GiftController@toggleStat');
+
 Route::resource('/podcasts','PodcastController');
 Route::get('/podcasts/toggleStat/{id}', 'PodcastController@toggleStat');
+
+Route::resource('/subscribes','SubscribeController');
 
 Route::resource('/videos','VideoController');
 Route::get('/videos/toggleStat/{id}', 'VideoController@toggleStat');

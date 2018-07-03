@@ -25,8 +25,18 @@
                   </router-link>
                </li>
                <li>
+                  <router-link v-bind:to="{path: '/gift/index'}">
+                     <i class="fa fa-gift"></i> <span class="nav-label">Gift</span>
+                  </router-link>
+               </li>
+               <li>
                   <router-link v-bind:to="{path: '/podcast/index'}">
                      <i class="fa fa-podcast"></i> <span class="nav-label">Podcast</span>
+                  </router-link>
+               </li>
+               <li>
+                  <router-link v-bind:to="{path: '/subscribe/index'}">
+                     <i class="fa fa-users"></i> <span class="nav-label">Subscribe</span>
                   </router-link>
                </li>
                <li>

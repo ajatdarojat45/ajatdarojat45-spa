@@ -17,18 +17,26 @@ const Deletepost  =  Vue.component('Deletepost', require('./components/Deletepos
 const Viewpost    =  Vue.component('Viewpost', require('./components/Viewposts.vue'));
 // Dashboard
 const Dashboard   =  Vue.component('Dashboard', require('./components/Dashboard.vue'));
-// blogs
+// blog
 const BlogEdit    =  Vue.component('BlogEdit', require('./components/blogs/Edit.vue'));
 const BlogShow    =  Vue.component('BlogShow', require('./components/blogs/Show.vue'));
 const BlogIndex   =  Vue.component('BlogIndex', require('./components/blogs/Index.vue'));
 const BlogCreate  =  Vue.component('BlogCreate', require('./components/blogs/Create.vue'));
 const BlogDelete  =  Vue.component('BlogDelete', require('./components/blogs/Delete.vue'));
+// gift
+const GiftEdit    =  Vue.component('GiftEdit', require('./components/gifts/Edit.vue'));
+const GiftShow    =  Vue.component('GiftShow', require('./components/gifts/Show.vue'));
+const GiftIndex   =  Vue.component('GiftIndex', require('./components/gifts/Index.vue'));
+const GiftCreate  =  Vue.component('GiftCreate', require('./components/gifts/Create.vue'));
+const GiftDelete  =  Vue.component('GiftDelete', require('./components/gifts/Delete.vue'));
 // podcasts
 const PodcastEdit    =  Vue.component('PodcastEdit', require('./components/podcasts/Edit.vue'));
 const PodcastShow    =  Vue.component('PodcastShow', require('./components/podcasts/Show.vue'));
 const PodcastIndex   =  Vue.component('PodcastIndex', require('./components/podcasts/Index.vue'));
 const PodcastCreate  =  Vue.component('PodcastCreate', require('./components/podcasts/Create.vue'));
 const PodcastDelete  =  Vue.component('PodcastDelete', require('./components/podcasts/Delete.vue'));
+// subscribes
+const SubscribeIndex   =  Vue.component('SubscribeIndex', require('./components/subscribes/Index.vue'));
 // videos
 const VideoEdit    =  Vue.component('VideoEdit', require('./components/videos/Edit.vue'));
 const VideoShow    =  Vue.component('VideoShow', require('./components/videos/Show.vue'));
@@ -97,6 +105,32 @@ const routes = [
       path: '/blog/show/:id',
       component: BlogShow
    },
+   // gifts
+   {
+      name: 'GiftIndex',
+      path: '/gift/index',
+      component: GiftIndex
+   },
+   {
+      name: 'GiftCreate',
+      path: '/gift/create',
+      component: GiftCreate
+   },
+   {
+      name: 'GiftDelete',
+      path: '/gift/delete/:id',
+      component: GiftDelete
+   },
+   {
+      name: 'GiftEdit',
+      path: '/gift/edit/:id',
+      component: GiftEdit
+   },
+   {
+      name: 'GiftShow',
+      path: '/gift/show/:id',
+      component: GiftShow
+   },
    // podcasts
    {
       name: 'PodcastIndex',
@@ -122,6 +156,12 @@ const routes = [
       name: 'PodcastShow',
       path: '/podcast/show/:id',
       component: PodcastShow
+   },
+   // subscribes
+   {
+      name: 'SubscribeIndex',
+      path: '/subscribe/index',
+      component: SubscribeIndex
    },
    // Video
    {
