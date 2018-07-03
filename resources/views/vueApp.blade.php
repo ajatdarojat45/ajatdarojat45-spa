@@ -67,14 +67,6 @@
    <!-- DataTables -->
    <script src="{{ asset('datatables/jquery.dataTables.min.js') }}"></script>
    <script src="{{ asset('datatables/dataTables.bootstrap.min.js') }}"></script>
-
-   <script>
-      var route_prefix = "{{ url(config('lfm.url_prefix', config('lfm.prefix'))) }}";
-   </script>
-
-   <!-- TinyMCE init -->
-   <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
-   {{-- <script src="{{asset('../node_modules/@tinymce/tinymce-vue/lib/browser/tinymce-vue.min.js')}}"></script> --}}
 </body>
 
 </html>

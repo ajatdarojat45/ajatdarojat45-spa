@@ -11,9 +11,12 @@
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', function () {
+    return view('vueApp2');
+});
+Route::get('/dashboard', function () {
+    return view('vueApp');
+});
 
 // Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
 //      \UniSharp\LaravelFilemanager\Lfm::routes();
@@ -21,7 +24,7 @@
 
 Auth::routes();
 
-Route::get('/', 'PostController@home');
+// Route::get('/', 'PostController@home');
 Route::resource('/posts','PostController');
 
 Route::resource('/blogs','BlogController');
@@ -37,3 +40,15 @@ Route::resource('/subscribes','SubscribeController');
 
 Route::resource('/videos','VideoController');
 Route::get('/videos/toggleStat/{id}', 'VideoController@toggleStat');
+
+// public
+Route::get('/blog','PublicController@blog');
+Route::get('/blog/{slug}','PublicController@blogDetail');
+
+Route::get('/gift','PublicController@gift');
+
+Route::get('/podcast','PublicController@podcast');
+Route::get('/podcast/{slug}','PublicController@podcastDetail');
+
+Route::get('/video','PublicController@video');
+Route::get('/video/{slug}','PublicController@videoDetail');

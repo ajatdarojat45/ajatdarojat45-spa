@@ -60,6 +60,7 @@
                                      </div>
                                   </div>
                               </div>
+                              <!-- <editor api-key="API_KEY" :init="{plugins: 'wordcount'}"></editor> -->
                           </fieldset>
                           <button type="button" class="btn btn-primary pull-right btn-sm" data-toggle="tooltip" data-placement="top" @click="create" style="margin-left:10px">
                           <i class="fa fa-save"></i> Save
@@ -77,24 +78,16 @@
 </template>
 
 <script>
-   var Editor = require('@tinymce/tinymce-vue');
-
    export default {
-
       data: function () {
          return {
             blog: {
                title: '',
                content: '',
                image:   ''
-            }
+            },
          }
       },
-
-      components: {
-         'editor': Editor // <- Important part
-      },
-
       methods: {
          create: function() {
             let uri = 'http://localhost:8000/blogs/';

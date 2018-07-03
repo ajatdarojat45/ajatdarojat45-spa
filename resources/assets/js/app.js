@@ -8,6 +8,7 @@ window.Axios=require('axios').default;
 import Editor from '@tinymce/tinymce-vue';
 
 let AppLayout= require('./components/App.vue');
+let AppLayout2= require('./components/App2.vue');
 
 // posts
 const Listposts   =  Vue.component('Listposts', require('./components/Listposts.vue'));
@@ -44,8 +45,21 @@ const VideoIndex   =  Vue.component('VideoIndex', require('./components/videos/I
 const VideoCreate  =  Vue.component('VideoCreate', require('./components/videos/Create.vue'));
 const VideoDelete  =  Vue.component('VideoDelete', require('./components/videos/Delete.vue'));
 
+// public
+const Home           =  Vue.component('Home', require('./components/publics/Home.vue'));
+const Gift           =  Vue.component('Gift', require('./components/publics/gifts/Index.vue'));
+// blog
+const Blog           =  Vue.component('Blog', require('./components/publics/blogs/Index.vue'));
+const BlogDetail     =  Vue.component('BlogDetail', require('./components/publics/blogs/Detail.vue'));
+// podcast
+const Podcast        =  Vue.component('Podcast', require('./components/publics/podcasts/Index.vue'));
+const PodcastDetail  =  Vue.component('PodcastDetail', require('./components/publics/podcasts/Detail.vue'));
+// video
+const Video          =  Vue.component('Video', require('./components/publics/videos/Index.vue'));
+const VideoDetail    =  Vue.component('VideoDetail', require('./components/publics/videos/Detail.vue'));
+
 // registering Modules
-Vue.use(VueRouter,VueAxios, axios, Editor);
+Vue.use(VueRouter,VueAxios, axios);
 
 const routes = [
    {
@@ -76,7 +90,7 @@ const routes = [
    // dashboard
    {
       name: 'Dashboard',
-      path: '/',
+      path: '/dashboard',
       component: Dashboard
    },
    // blogs
@@ -188,7 +202,53 @@ const routes = [
       name: 'VideoShow',
       path: '/video/show/:id',
       component: VideoShow
-   }
+   },
+   // publics
+   // Home
+   {
+      name: 'Home',
+      path: '/',
+      component: Home
+   },
+   // blogs
+   {
+      name: 'Blog',
+      path: '/blog',
+      component: Blog
+   },
+   {
+      name: 'BlogDetail',
+      path: '/blog/:slug',
+      component: BlogDetail
+   },
+   // gifts
+   {
+      name: 'Gift',
+      path: '/gift',
+      component: Gift
+   },
+   // podcast
+   {
+      name: 'Podcast',
+      path: '/podcast',
+      component: Podcast
+   },
+   {
+      name: 'PodcastDetail',
+      path: '/podcast/:slug',
+      component: PodcastDetail
+   },
+   // videos
+   {
+      name: 'Video',
+      path: '/video',
+      component: Video
+   },
+   {
+      name: 'VideoDetail',
+      path: '/video/:slug',
+      component: VideoDetail
+   },
 ];
 
 const router = new VueRouter({ mode: 'history', routes: routes});
@@ -199,3 +259,10 @@ new Vue(
       AppLayout
    )
 ).$mount('#app');
+
+new Vue(
+   Vue.util.extend(
+      { router },
+      AppLayout2
+   )
+).$mount('#app2');
