@@ -58,11 +58,10 @@
 
                      </div>
                      <div class="col-lg-4 col-md-4">
-                        <form action="" method="post">
+                        <form v-on:submit.prevent = "create">
                            <strong>
                               <div class="input-group">
-                                 <input type="text" placeholder="Masukan email nya disini." name="email" class="form-control input-sm">
-                                 <input type="hidden" name="type" value="subscribe">
+                                 <input type="email" placeholder="Masukan email nya disini." v-model="subscribe.email" class="form-control input-sm" required>
                                  <div class="input-group-btn">
                                     <button class="btn btn-danger btn-sm" type="submit">
                                        <strong>Subscribe</strong>
@@ -71,6 +70,9 @@
                               </div>
                            </strong>
                         </form>
+                        <router-link v-bind:to="{path: '/subscribe'}">
+                           subscribe
+                        </router-link>
                      </div>
                   </div>
                </div>
@@ -94,6 +96,10 @@
       data(){
          return{
             displayPicture: '',
+            subscribe: {
+               email: '',
+               type: 'subscribe',
+            }
          }
       },
 
@@ -102,7 +108,6 @@
             axios.get('http://localhost:8000/api/getDisplayPictureActive/')
                .then((res) => {
                   this.displayPicture = res.data;
-                  console.log(this.displayPicture);
                })
                .catch((err) => {
                   console.log(err)
@@ -112,6 +117,13 @@
          login: function() {
             window.location.replace('login');
          },
+
+         create: function() {
+            let uri = 'http://localhost:8000/api/subscribes/';
+            Axios.post(uri, this.subscribe).then((response) => {
+               this.$router.push({name: 'Subscribe'});
+            })
+         }
       }
     }
 </script>

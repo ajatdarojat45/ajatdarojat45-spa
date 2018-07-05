@@ -95,6 +95,7 @@
             }
          }
       },
+      
       methods: {
          create: function() {
             let uri = 'http://localhost:8000/api/blogs/';

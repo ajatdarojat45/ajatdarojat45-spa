@@ -14507,6 +14507,8 @@ var BlogDetail = Vue.component('BlogDetail', __webpack_require__(163));
 // podcast
 var Podcast = Vue.component('Podcast', __webpack_require__(168));
 var PodcastDetail = Vue.component('PodcastDetail', __webpack_require__(171));
+// subscribe
+var Subscribe = Vue.component('Subscribe', __webpack_require__(184));
 // video
 var Video = Vue.component('Video', __webpack_require__(174));
 var VideoDetail = Vue.component('VideoDetail', __webpack_require__(177));
@@ -14676,12 +14678,6 @@ var routes = [{
    path: '/gift',
    component: Gift
 },
-// login
-// {
-//    name: 'Login',
-//    path: '/login',
-//    component: Login
-// },
 // podcast
 {
    name: 'Podcast',
@@ -14691,6 +14687,12 @@ var routes = [{
    name: 'PodcastDetail',
    path: '/podcast/:slug',
    component: PodcastDetail
+},
+// subscribe
+{
+   name: 'Subscribe',
+   path: '/subscribe',
+   component: Subscribe
 },
 // videos
 {
@@ -53585,6 +53587,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
          }
       };
    },
+
    methods: {
       create: function create() {
          var _this = this;
@@ -61130,6 +61133,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
    mounted: function mounted() {
@@ -61137,7 +61142,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
    },
    data: function data() {
       return {
-         displayPicture: ''
+         displayPicture: '',
+         subscribe: {
+            email: '',
+            type: 'subscribe'
+         }
       };
    },
 
@@ -61148,7 +61157,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
          axios.get('http://localhost:8000/api/getDisplayPictureActive/').then(function (res) {
             _this.displayPicture = res.data;
-            console.log(_this.displayPicture);
          }).catch(function (err) {
             console.log(err);
          });
@@ -61157,6 +61165,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
       login: function login() {
          window.location.replace('login');
+      },
+
+      create: function create() {
+         var _this2 = this;
+
+         var uri = 'http://localhost:8000/api/subscribes/';
+         Axios.post(uri, this.subscribe).then(function (response) {
+            _this2.$router.push({ name: 'Subscribe' });
+         });
       }
    }
 });
@@ -61274,7 +61291,83 @@ var render = function() {
         _vm._v(" "),
         _vm._m(2),
         _vm._v(" "),
-        _vm._m(3),
+        _c(
+          "div",
+          { staticClass: "container", staticStyle: { "margin-bottom": "7px" } },
+          [
+            _c("div", { staticClass: "row" }, [
+              _c("div", { staticClass: "container" }, [
+                _c("div", { staticClass: "col-lg-4  col-md-4" }),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "col-lg-4 col-md-4" },
+                  [
+                    _c(
+                      "form",
+                      {
+                        on: {
+                          submit: function($event) {
+                            $event.preventDefault()
+                            return _vm.create($event)
+                          }
+                        }
+                      },
+                      [
+                        _c("strong", [
+                          _c("div", { staticClass: "input-group" }, [
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.subscribe.email,
+                                  expression: "subscribe.email"
+                                }
+                              ],
+                              staticClass: "form-control input-sm",
+                              attrs: {
+                                type: "email",
+                                placeholder: "Masukan email nya disini.",
+                                required: ""
+                              },
+                              domProps: { value: _vm.subscribe.email },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.subscribe,
+                                    "email",
+                                    $event.target.value
+                                  )
+                                }
+                              }
+                            }),
+                            _vm._v(" "),
+                            _vm._m(3)
+                          ])
+                        ])
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "router-link",
+                      { attrs: { to: { path: "/subscribe" } } },
+                      [
+                        _vm._v(
+                          "\n                        subscribe\n                     "
+                        )
+                      ]
+                    )
+                  ],
+                  1
+                )
+              ])
+            ])
+          ]
+        ),
         _vm._v(" "),
         _c("br"),
         _vm._v(" "),
@@ -61385,53 +61478,13 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "container", staticStyle: { "margin-bottom": "7px" } },
-      [
-        _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "container" }, [
-            _c("div", { staticClass: "col-lg-4  col-md-4" }),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-lg-4 col-md-4" }, [
-              _c("form", { attrs: { action: "", method: "post" } }, [
-                _c("strong", [
-                  _c("div", { staticClass: "input-group" }, [
-                    _c("input", {
-                      staticClass: "form-control input-sm",
-                      attrs: {
-                        type: "text",
-                        placeholder: "Masukan email nya disini.",
-                        name: "email"
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("input", {
-                      attrs: {
-                        type: "hidden",
-                        name: "type",
-                        value: "subscribe"
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "input-group-btn" }, [
-                      _c(
-                        "button",
-                        {
-                          staticClass: "btn btn-danger btn-sm",
-                          attrs: { type: "submit" }
-                        },
-                        [_c("strong", [_vm._v("Subscribe")])]
-                      )
-                    ])
-                  ])
-                ])
-              ])
-            ])
-          ])
-        ])
-      ]
-    )
+    return _c("div", { staticClass: "input-group-btn" }, [
+      _c(
+        "button",
+        { staticClass: "btn btn-danger btn-sm", attrs: { type: "submit" } },
+        [_c("strong", [_vm._v("Subscribe")])]
+      )
+    ])
   }
 ]
 render._withStripped = true
@@ -63449,6 +63502,436 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 181 */,
+/* 182 */,
+/* 183 */,
+/* 184 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(185)
+}
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(187)
+/* template */
+var __vue_template__ = __webpack_require__(188)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\publics\\Subscribe.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-189370b1", Component.options)
+  } else {
+    hotAPI.reload("data-v-189370b1", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 185 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(186);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(5)("55cb2156", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-189370b1\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Subscribe.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-189370b1\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Subscribe.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 186 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(4)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\nhtml,\nbody {\n   background-color: #fff;\n   color: #636b6f;\n   font-family: 'Raleway', sans-serif;\n   font-weight: 100;\n   height: 100vh;\n   margin: 0;\n}\n.full-height {\n   height: 100vh;\n}\n.flex-center {\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n}\n.position-ref {\n   position: relative;\n}\n.top-right {\n   position: absolute;\n   right: 10px;\n   top: 18px;\n}\n.content {\n   text-align: center;\n}\n.title {\n   font-size: 30px;\n}\n.links>a {\n   color: #636b6f;\n   padding: 0 25px;\n   font-size: 15px;\n   font-weight: 600;\n   letter-spacing: .1rem;\n   text-decoration: none;\n   text-transform: ;\n}\n.m-b-md {\n   margin-bottom: 30px;\n}\n.menu>a {\n   font-size: 15px;\n   color: #636b6f;\n   margin-right: 20px;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 187 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+   mounted: function mounted() {},
+   data: function data() {
+      return {
+         displayPicture: '',
+         subscribe: {
+            email: '',
+            type: 'unsubscribe'
+         },
+         notif: false
+      };
+   },
+
+
+   methods: {
+      create: function create() {
+         var _this = this;
+
+         console.log(this.subscribe);
+         var uri = 'http://localhost:8000/api/subscribes/';
+         Axios.post(uri, this.subscribe).then(function (response) {
+            _this.notif = response.data;
+         });
+      }
+   }
+});
+
+/***/ }),
+/* 188 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("div", { staticClass: "flex-center position-ref full-height" }, [
+      _c("div", { staticClass: "content" }, [
+        _c("div", { staticClass: "row" }, [
+          _c(
+            "strong",
+            [
+              _c(
+                "router-link",
+                {
+                  staticStyle: { color: "#636b6f" },
+                  attrs: { to: { path: "/" } }
+                },
+                [_vm._v("\n                  /ajatdarojat45\n               ")]
+              ),
+              _vm._v("\n               /Subscribe\n            ")
+            ],
+            1
+          )
+        ]),
+        _c("br"),
+        _vm._v(" "),
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-lg-4  col-md-4" }),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-lg-4 col-md-4" }, [
+            _vm.notif == "subscribe berhasil"
+              ? _c("div", { staticClass: "alert alert-success" }, [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "close",
+                      attrs: {
+                        type: "button",
+                        "data-dismiss": "alert",
+                        "aria-hidden": "true"
+                      }
+                    },
+                    [_vm._v("×")]
+                  ),
+                  _vm._v(" "),
+                  _c("strong", [
+                    _vm._v("Subscribe success! Terimakasih sudah subscribe.")
+                  ])
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.notif == "sudah subscribe"
+              ? _c("div", { staticClass: "alert alert-success" }, [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "close",
+                      attrs: {
+                        type: "button",
+                        "data-dismiss": "alert",
+                        "aria-hidden": "true"
+                      }
+                    },
+                    [_vm._v("×")]
+                  ),
+                  _vm._v(" "),
+                  _c("strong", [_vm._v("Kamu sudah subscribe.")])
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.notif == "sudah unsubscribe"
+              ? _c("div", { staticClass: "alert alert-success" }, [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "close",
+                      attrs: {
+                        type: "button",
+                        "data-dismiss": "alert",
+                        "aria-hidden": "true"
+                      }
+                    },
+                    [_vm._v("×")]
+                  ),
+                  _vm._v(" "),
+                  _c("strong", [_vm._v("Kamu sudah unsubscribe.")])
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.notif == "unsubscribe berhasil"
+              ? _c("div", { staticClass: "alert alert-success" }, [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "close",
+                      attrs: {
+                        type: "button",
+                        "data-dismiss": "alert",
+                        "aria-hidden": "true"
+                      }
+                    },
+                    [_vm._v("×")]
+                  ),
+                  _vm._v(" "),
+                  _c("strong", [
+                    _vm._v(
+                      "Unubscribe success! Kami harap kamu bisa berlangganan lagi."
+                    )
+                  ])
+                ])
+              : _c("div", { staticClass: "alert alert-success" }, [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "close",
+                      attrs: {
+                        type: "button",
+                        "data-dismiss": "alert",
+                        "aria-hidden": "true"
+                      }
+                    },
+                    [_vm._v("×")]
+                  ),
+                  _vm._v(" "),
+                  _c("strong", [
+                    _vm._v("Subscribe success! Terimakasih sudah subscribe.")
+                  ])
+                ]),
+            _vm._v(" "),
+            _c("strong", [
+              _c(
+                "form",
+                {
+                  on: {
+                    submit: function($event) {
+                      $event.preventDefault()
+                      return _vm.create($event)
+                    }
+                  }
+                },
+                [
+                  _c("strong", [
+                    _c("div", { staticClass: "input-group" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.subscribe.email,
+                            expression: "subscribe.email"
+                          }
+                        ],
+                        staticClass: "form-control input-sm",
+                        attrs: {
+                          type: "email",
+                          placeholder: "Masukan email nya disini.",
+                          required: ""
+                        },
+                        domProps: { value: _vm.subscribe.email },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.subscribe,
+                              "email",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _vm._m(0)
+                    ])
+                  ])
+                ]
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-lg-4  col-md-4" })
+        ]),
+        _vm._v(" "),
+        _c("br"),
+        _vm._v(" "),
+        _c(
+          "p",
+          [
+            _c("center", [
+              _c("strong", [
+                _vm._v(" lazyCode - "),
+                _c("i", { staticClass: "fa fa-code" }),
+                _vm._v(" dengan "),
+                _c("i", {
+                  staticClass: "fa fa-heart",
+                  staticStyle: { color: "red" }
+                })
+              ]),
+              _c("br")
+            ])
+          ],
+          1
+        )
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "input-group-btn" }, [
+      _c(
+        "button",
+        { staticClass: "btn btn-danger btn-sm", attrs: { type: "submit" } },
+        [_c("strong", [_vm._v("Subscribe")])]
+      )
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-189370b1", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

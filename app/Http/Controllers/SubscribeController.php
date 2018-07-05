@@ -19,7 +19,41 @@ class SubscribeController extends Controller
 
    public function store(Request $request)
    {
+      // validation data
+      $this->validate($request, [
+        'email' => 'required',
+        'type' => 'required',
+      ]);
 
+      // get data
+      $subsscriber = Subscribe::where('email', $request->email)->first();
+
+      // cek data kosong ataung engga
+      if (empty($subsscriber)) {
+         // insert data to db
+         $subsscribe = Subscribe::create([
+            'email'  => $request->email,
+         ]);
+         return 'subscribe berhasil';
+      }else {
+         if ($request->type == 'subscribe') {
+            if ($subsscriber->stat == 1) {
+               return 'sudah subscribe';
+            }else{
+               $subsscriber->stat = 1;
+               $subsscriber->update();
+               return 'subscribe berhasil';
+            }
+         }else {
+            if ($subsscriber->stat == 0) {
+               return 'sudah unsubscribe';
+            }else{
+               $subsscriber->stat = 0;
+               $subsscriber->update();
+               return 'unsubscribe berhasil';
+            }
+         }
+      }
    }
 
    public function show($id)

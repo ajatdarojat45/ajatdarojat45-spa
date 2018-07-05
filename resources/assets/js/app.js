@@ -60,6 +60,8 @@ const BlogDetail     =  Vue.component('BlogDetail', require('./components/public
 // podcast
 const Podcast        =  Vue.component('Podcast', require('./components/publics/podcasts/Index.vue'));
 const PodcastDetail  =  Vue.component('PodcastDetail', require('./components/publics/podcasts/Detail.vue'));
+// subscribe
+const Subscribe      =  Vue.component('Subscribe', require('./components/publics/Subscribe.vue'));
 // video
 const Video          =  Vue.component('Video', require('./components/publics/videos/Index.vue'));
 const VideoDetail    =  Vue.component('VideoDetail', require('./components/publics/videos/Detail.vue'));
@@ -254,12 +256,6 @@ const routes = [
       path: '/gift',
       component: Gift
    },
-   // login
-   // {
-   //    name: 'Login',
-   //    path: '/login',
-   //    component: Login
-   // },
    // podcast
    {
       name: 'Podcast',
@@ -270,6 +266,12 @@ const routes = [
       name: 'PodcastDetail',
       path: '/podcast/:slug',
       component: PodcastDetail
+   },
+   // subscribe
+   {
+      name: 'Subscribe',
+      path: '/subscribe',
+      component: Subscribe
    },
    // videos
    {
