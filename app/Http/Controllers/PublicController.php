@@ -44,4 +44,5 @@ class PublicController extends Controller
    {
       return Gift::where('stat', '1')->orderBy('created_at', 'desc')->get();
    }
+
 }

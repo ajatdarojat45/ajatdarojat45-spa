@@ -6,7 +6,15 @@
                <center>
                   <img src="" alt="" class="img-circle img-responsive" width="200px"><br>
                </center>
-               <p><strong>Halo, saya Ajat Darojat <a href="" style="color:#636b6f"> <i class="fa fa-coffee"></i></a></strong></p>
+               <p>
+                  <strong>
+                     Halo, saya Ajat Darojat
+                     <a style="color:#636b6f" v-on:click="login"> <i class="fa fa-coffee"></i></a>
+                     <!-- <router-link v-bind:to="{path: '/login'}" style="color:#636b6f">
+                        <i class="fa fa-coffee"></i>
+                     </router-link> -->
+                  </strong>
+               </p>
             </div>
             <div class="menu">
                <h3>
@@ -80,7 +88,11 @@
 
 <script>
    export default {
-
+      methods: {
+         login: function() {
+            window.location.replace('login');
+         }
+      }
    }
 </script>
 <style>

@@ -19,17 +19,20 @@ class BlogController extends Controller
 
    public function store(Request $request)
    {
+      // validation data
       $this->validate($request, [
         'title' => 'required',
         'content' => 'required',
       ]);
 
+      // create slug
       $slug = str_slug($request->title, '-');
       if(Blog::where('slug', $slug)->first() != null)
       $slug = $slug.'-'.time();
 
+      // insert data to db
       $blog = Blog::create([
-         'title'        => $request->name,
+         'title'        => $request->title,
          'slug'         => $slug,
          'content'      => $request->content,
          'image'        => $request->image,

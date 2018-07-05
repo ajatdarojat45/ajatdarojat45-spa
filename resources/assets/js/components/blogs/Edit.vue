@@ -1,7 +1,7 @@
 <template>
    <div>
       <div class="row wrapper border-bottom white-bg page-heading">
-         <div class="col-sm-4">
+         <div >
             <h2>Blog</h2>
             <ol class="breadcrumb">
                <li>
@@ -41,7 +41,8 @@
                               <div class="form-group">
                                   <label class="col-sm-2 control-label">Content:</label>
                                   <div class="col-sm-10">
-                                      <textarea class="form-control" name="tm" v-model="blog.content"></textarea>
+                                      <!-- <textarea class="form-control" name="tm" v-model="blog.content"></textarea> -->
+                                      <editor api-key="API_KEY" :init="{plugins: 'wordcount'}" v-model="blog.content"></editor>
                                   </div>
                               </div>
                               <div class="form-group">
@@ -88,12 +89,18 @@ export default{
          }
       }
    },
+
+   components: {
+       'editor': Editor
+   },
+
    created: function(){
       let uri = 'http://localhost:8000/blogs/'+this.$route.params.id+'/edit';
       Axios.get(uri).then((response) => {
          this.blog = response.data;
       });
    },
+
    methods: {
       update: function() {
          let uri = 'http://localhost:8000/blogs/'+this.$route.params.id;

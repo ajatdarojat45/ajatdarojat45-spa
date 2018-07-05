@@ -23,6 +23,7 @@
         "@tinymce/tinymce-vue": "^1.0.8",
         "tinymce-vue-2": "0.0.5",
         "vue-axios": "^2.1.1",
-        "vue-router": "^3.0.1"
+        "vue-router": "^3.0.1",
+        "vue-tinymce-editor": "^1.6.2"
     }
 }

@@ -37,8 +37,8 @@
                {{ video.embed }}
             </div>
             <br>
-            <!-- <div id="disqus_thread"></div> -->
-            <!-- <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript> -->
+            <div id="disqus_thread"></div>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
          </div>
          <div class="col-lg-2 col-md-2">
 
@@ -55,12 +55,12 @@
 <script>
    export default {
       mounted() {
-         // (function() {
-         // var d = document, s = d.createElement('script');
-         // s.src = 'https://wwwajatdarojat45tk.disqus.com/embed.js';
-         // s.setAttribute('data-timestamp', +new Date());
-         // (d.head || d.body).appendChild(s);
-         // })();
+         (function() {
+         var d = document, s = d.createElement('script');
+         s.src = 'https://wwwajatdarojat45tk.disqus.com/embed.js';
+         s.setAttribute('data-timestamp', +new Date());
+         (d.head || d.body).appendChild(s);
+         })();
       },
       data: function () {
          return {

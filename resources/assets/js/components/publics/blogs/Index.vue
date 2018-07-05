@@ -18,21 +18,23 @@
       </center>
       <br>
       <div class="row">
-         <div class="row">
-            <center>
-               <div class="col-lg-4 col-md-4 m-b-md" v-for="(blog, index) in blogs" :key="blog.id">
-                  <strong>
-                     <!-- <a href="" style="color:#636b6f"><p style="font-size: 20px; ">{{blog.title}}</p></a> -->
-                     <router-link v-bind:to="{name: 'BlogDetail', params: {slug: blog.slug}}">
-                        <p style="font-size: 20px; color:#636b6f;">{{blog.title}}</p>
-                     </router-link>
-                     <p>{{blog.created_at}}</p>
-                  </strong>
-               </div>
-            </center>
+         <div class="col-lg-1 col-md-1">
+
+         </div>
+         <div class="col-lg-9 col-md-9">
+         <center>
+            <div class="col-lg-4 col-md-4 m-b-md" v-for="(blog, index) in blogs" :key="blog.id">
+               <strong>
+                  <!-- <a href="" style="color:#636b6f"><p style="font-size: 20px; ">{{blog.title}}</p></a> -->
+                  <router-link v-bind:to="{name: 'BlogDetail', params: {slug: blog.slug}}">
+                     <p style="font-size: 20px; color:#636b6f;">{{blog.title | subStr }}</p>
+                  </router-link>
+                  <p>{{blog.created_at}}</p>
+               </strong>
+            </div>
+         </center>
          </div>
       </div>
-      <br>
       <p>
          <center>
             <strong> lazyCode - <i class="fa fa-code"></i> dengan <i class="fa fa-heart" style="color:red"></i></strong><br>
@@ -63,8 +65,14 @@
                   console.log(err)
                })
          },
+      },
+
+      filters: {
+        	subStr: function(string) {
+          	return string.substring(0,22) + '...';
+         }
       }
-    }
+}
 </script>
 <style>
       html,

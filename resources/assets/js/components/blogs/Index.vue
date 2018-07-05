@@ -71,7 +71,7 @@
 </template>
 
 <script>
-    export default {
+   export default {
       mounted() {
          this.fetchData()
       },

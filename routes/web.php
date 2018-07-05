@@ -13,9 +13,12 @@
 
 Route::get('/', function () {
     return view('vueApp2');
-});
+})->name('home');
 Route::get('/dashboard', function () {
     return view('vueApp');
+});
+Route::get('/home', function () {
+    return redirect('/dashboard');
 });
 
 // Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {

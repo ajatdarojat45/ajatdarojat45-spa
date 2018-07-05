@@ -19,10 +19,10 @@
       <br>
       <div class="row" v-for="(podcast, index) in podcasts" :key="podcast.id">
          <div class="row">
-            <div class="col-lg-2 col-md-2">
+            <div class="col-lg-1 col-md-1">
 
             </div>
-            <div class="col-lg-8 col-md-8">
+            <div class="col-lg-9 col-md-9">
                <div class="row">
                   <div class="col-lg-3 col-md-3">
                   </div>

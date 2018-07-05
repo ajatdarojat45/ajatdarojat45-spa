@@ -29,7 +29,7 @@
                <strong>{{blog.created_at}}</strong><br><br>
             </center>
             <strong>
-               <p style="text-align:left">
+               <p style="text-align:left" v-html="blog.content">
                   {{blog.content}}
                </p>
             </strong>

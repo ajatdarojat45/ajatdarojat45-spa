@@ -1,7 +1,7 @@
 <template>
    <div>
       <div class="row wrapper border-bottom white-bg page-heading">
-         <div class="col-sm-4">
+         <div class="">
             <h2>Podcast</h2>
             <ol class="breadcrumb">
                <li>
@@ -41,7 +41,8 @@
                               <div class="form-group">
                                   <label class="col-sm-2 control-label">Description:</label>
                                   <div class="col-sm-10">
-                                      <textarea class="form-control" name="" v-model="video.description"></textarea>
+                                      <!-- <textarea class="form-control" name="" v-model="video.description"></textarea> -->
+                                      <editor api-key="API_KEY" :init="{plugins: 'wordcount'}" v-model="video.description"></editor>
                                   </div>
                               </div>
                               <div class="form-group">
@@ -78,6 +79,11 @@ export default{
          }
       }
    },
+
+   components: {
+       'editor': Editor
+   },
+   
    created: function(){
       let uri = 'http://localhost:8000/videos/'+this.$route.params.id+'/edit';
       Axios.get(uri).then((response) => {

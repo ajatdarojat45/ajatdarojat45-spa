@@ -1,8 +1,7 @@
 <template id="post">
    <div>
       <div class="row wrapper border-bottom white-bg page-heading">
-         <div class="col-sm-4">
-            <h2>Blog</h2>
+         <div>
             <ol class="breadcrumb">
                <li>
                   <router-link v-bind:to="{path: '/dashboard'}">

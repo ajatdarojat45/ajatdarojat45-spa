@@ -40,15 +40,14 @@
                               <div class="form-group">
                                   <label class="col-sm-2 control-label">Content:</label>
                                   <div class="col-sm-10">
-                                      <textarea class="form-control" name="" v-model="blog.content"></textarea>
-                                      <!-- <editor api-key="API_KEY" :init="{plugins: 'wordcount'}"></editor> -->
+                                       <editor api-key="API_KEY" :init="{plugins: 'wordcount'}" v-model="blog.content"></editor>
                                   </div>
                               </div>
                               <div class="form-group">
                                   <label class="col-sm-2 control-label">Image:</label>
-                                  <div class="col-lg-2 col-md-2">
+                                  <!-- <div class="col-lg-2 col-md-2">
                                      <img id="holder" style="margin-top:15px;max-height:100px;">
-                                 </div>
+                                 </div> -->
                                   <div class="col-lg-8 col-md-8">
                                      <div class="input-group">
                                         <span class="input-group-btn">
@@ -60,7 +59,6 @@
                                      </div>
                                   </div>
                               </div>
-                              <!-- <editor api-key="API_KEY" :init="{plugins: 'wordcount'}"></editor> -->
                           </fieldset>
                           <button type="button" class="btn btn-primary pull-right btn-sm" data-toggle="tooltip" data-placement="top" @click="create" style="margin-left:10px">
                           <i class="fa fa-save"></i> Save
@@ -79,20 +77,30 @@
 
 <script>
    export default {
+      mounted () {
+         $('#lfm').filemanager('image', {prefix: route_prefix});
+         $('#lfm2').filemanager('file', {prefix: route_prefix});
+      },
+
+      components: {
+          'editor': Editor
+      },
+
       data: function () {
          return {
             blog: {
                title: '',
                content: '',
                image:   ''
-            },
+            }
          }
       },
       methods: {
          create: function() {
             let uri = 'http://localhost:8000/blogs/';
             Axios.post(uri, this.blog).then((response) => {
-               this.$router.push({name: 'BlogIndex'})
+               // console.log(response.data);
+               this.$router.push({name: 'BlogIndex'});
             })
          }
       }

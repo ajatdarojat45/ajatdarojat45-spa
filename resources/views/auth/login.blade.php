@@ -1,69 +1,116 @@
-@extends('layouts.app')
+<!doctype html>
+<html lang="{{ app()->getLocale() }}">
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
+<head>
+   <meta charset="utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
-                        @csrf
+   <title>Login | Ajat Darojat</title>
 
-                        <div class="form-group row">
-                            <label for="email" class="col-sm-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+   <!-- Fonts -->
+   <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
+   <link href="{{ asset('inspinia/css/bootstrap.min.css') }}" rel="stylesheet">
+   <link href="{{ asset('inspinia/font-awesome/css/font-awesome.css') }}" rel="stylesheet">
 
-                                @if ($errors->has('email'))
-                                    <span class="invalid-feedback">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
+   <link rel="shortcut icon" type="image/x-icon" href="{{asset('profile.jpg')}}" />
+   <!-- Styles -->
+   <style>
+      html,
+      body {
+         background-color: #fff;
+         color: #636b6f;
+         font-family: 'Raleway', sans-serif;
+         font-weight: 100;
+         height: 100vh;
+         margin: 0;
+      }
 
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+      .full-height {
+         height: 100vh;
+      }
 
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
+      .flex-center {
+         align-items: center;
+         display: flex;
+         justify-content: center;
+      }
 
-                                @if ($errors->has('password'))
-                                    <span class="invalid-feedback">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
+      .position-ref {
+         position: relative;
+      }
 
-                        <div class="form-group row">
-                            <div class="col-md-6 offset-md-4">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> {{ __('Remember Me') }}
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
+      .top-right {
+         position: absolute;
+         right: 10px;
+         top: 18px;
+      }
 
-                        <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Login') }}
-                                </button>
+      .content {
+         text-align: center;
+      }
 
-                                <a class="btn btn-link" href="{{ route('password.request') }}">
-                                    {{ __('Forgot Your Password?') }}
-                                </a>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-@endsection
+      .title {
+         font-size: 30px;
+      }
+
+      .links>a {
+         color: #636b6f;
+         padding: 0 25px;
+         font-size: 15px;
+         font-weight: 600;
+         letter-spacing: .1rem;
+         text-decoration: none;
+         text-transform: ;
+      }
+
+      .m-b-md {
+         margin-bottom: 30px;
+      }
+   </style>
+</head>
+
+<body>
+   <div class="flex-center position-ref full-height">
+      <div class="content">
+         <strong>
+         <div>
+            <h3><strong>Selamat Datang <a href="{{route('home')}}" style="color:#636b6f"> ajatdarojat45</a></strong> </h3>
+            <p>
+            </p>
+            <p>Login in. To see it in action.</p>
+            <form class="m-t" method="POST" action="{{ route('login') }}">
+                 {{ csrf_field() }}
+                 <input type="hidden" name="role_id" value="2">
+                 <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                     <input id="email" type="email" class="form-control" name="email" placeholder="Email" value="{{ old('email') }}" required autofocus>
+                     @if ($errors->has('email'))
+                     <span class="help-block">
+                         <strong>{{ $errors->first('email') }}</strong>
+                     </span>
+                     @endif
+                 </div>
+                 <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                     <input id="password" type="password" class="form-control" name="password" placeholder="Password" required>
+                     @if ($errors->has('password'))
+                     <span class="help-block">
+                         <strong>{{ $errors->first('password') }}</strong>
+                     </span>
+                     @endif
+                 </div>
+                 <button type="submit" class="btn btn-primary btn-sm btn-block"><i class="fa fa-sign-in"></i><strong> Login</strong> </button><br>
+            </form>
+         </div><br>
+         <p>
+            <strong> lazyCode - <i class="fa fa-code"></i> dengan <i class="fa fa-heart" style="color:red"></i></strong>
+         </p>
+         </strong>
+         <script src="https://www.w3counter.com/tracker.js?id=117040"></script>
+      </div>
+   </div>
+
+   <script src="{{asset('inspinia/js/plugins/pace/pace.min.js')}}"></script>
+</body>
+
+</html>

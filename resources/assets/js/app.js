@@ -1,11 +1,10 @@
 require('./bootstrap');
 
-window.Vue = require('vue');
-window.VueRouter=require('vue-router').default;
-window.VueAxios=require('vue-axios').default;
-window.Axios=require('axios').default;
-
-import Editor from '@tinymce/tinymce-vue';
+window.Vue        =  require('vue');
+window.VueRouter  =  require('vue-router').default;
+window.VueAxios   =  require('vue-axios').default;
+window.Axios      =  require('axios').default;
+window.Editor     =  require('@tinymce/tinymce-vue').default;
 
 let AppLayout= require('./components/App.vue');
 let AppLayout2= require('./components/App2.vue');
@@ -51,6 +50,8 @@ const Gift           =  Vue.component('Gift', require('./components/publics/gift
 // blog
 const Blog           =  Vue.component('Blog', require('./components/publics/blogs/Index.vue'));
 const BlogDetail     =  Vue.component('BlogDetail', require('./components/publics/blogs/Detail.vue'));
+// login
+// const Login          =  Vue.component('Login', require('./components/publics/Login.vue'));
 // podcast
 const Podcast        =  Vue.component('Podcast', require('./components/publics/podcasts/Index.vue'));
 const PodcastDetail  =  Vue.component('PodcastDetail', require('./components/publics/podcasts/Detail.vue'));
@@ -59,7 +60,7 @@ const Video          =  Vue.component('Video', require('./components/publics/vid
 const VideoDetail    =  Vue.component('VideoDetail', require('./components/publics/videos/Detail.vue'));
 
 // registering Modules
-Vue.use(VueRouter,VueAxios, axios);
+Vue.use(VueRouter,VueAxios, axios, Editor);
 
 const routes = [
    {
@@ -227,6 +228,12 @@ const routes = [
       path: '/gift',
       component: Gift
    },
+   // login
+   // {
+   //    name: 'Login',
+   //    path: '/login',
+   //    component: Login
+   // },
    // podcast
    {
       name: 'Podcast',
@@ -252,12 +259,11 @@ const routes = [
 ];
 
 const router = new VueRouter({ mode: 'history', routes: routes});
-
 new Vue(
    Vue.util.extend(
       { router },
       AppLayout
-   )
+   ),
 ).$mount('#app');
 
 new Vue(

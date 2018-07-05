@@ -1,7 +1,7 @@
 <template id="post">
    <div>
       <div class="row wrapper border-bottom white-bg page-heading">
-         <div class="col-sm-4">
+         <div >
             <h2>Blog</h2>
             <ol class="breadcrumb">
                <li>
