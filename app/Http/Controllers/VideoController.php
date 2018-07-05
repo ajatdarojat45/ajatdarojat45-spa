@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Video;
+use Auth;
 
 class VideoController extends Controller
 {
@@ -104,6 +105,13 @@ class VideoController extends Controller
 
    public function getVideo($slug)
    {
-      return Video::where('slug', $slug)->first();
+      $video = Video::where('slug', $slug)->first();
+      if (Auth::guest()) {
+         // input visitor
+         $video->visitor = $video->visitor + 1;
+         $video->save();
+      }
+
+      return $video;
    }
 }

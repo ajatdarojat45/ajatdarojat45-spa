@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Podcast;
+use Auth;
 
 class PodcastController extends Controller
 {
@@ -104,6 +105,13 @@ class PodcastController extends Controller
 
    public function getPodcast($slug)
    {
-      return Podcast::where('slug', $slug)->first();
+      $podcast = Podcast::where('slug', $slug)->first();
+      if (Auth::guest()) {
+         // input visitor
+         $podcast->visitor = $podcast->visitor + 1;
+         $podcast->save();
+      }
+
+      return $podcast;
    }
 }

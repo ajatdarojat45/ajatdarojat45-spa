@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Blog;
+use Auth;
 
 class BlogController extends Controller
 {
@@ -108,6 +109,13 @@ class BlogController extends Controller
 
    public function getBlog($slug)
    {
-      return Blog::where('slug', $slug)->first();
+      $blog = Blog::where('slug', $slug)->first();
+      if (Auth::guest()) {
+         // input visitor
+         $blog->visitor = $blog->visitor + 1;
+         $blog->save();
+      }
+
+      return $blog;
    }
 }
