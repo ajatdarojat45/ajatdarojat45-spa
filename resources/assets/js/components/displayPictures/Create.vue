@@ -2,7 +2,7 @@
    <div>
       <div class="row wrapper border-bottom white-bg page-heading">
          <div class="col-sm-4">
-            <h2>Blog</h2>
+            <h2>Display Picture</h2>
             <ol class="breadcrumb">
                <li>
                   <router-link v-bind:to="{path: '/dashboard'}">
@@ -10,12 +10,12 @@
                   </router-link>
                </li>
                <li>
-                  <router-link v-bind:to="{path: '/blog/index'}">
-                     Blog
+                  <router-link v-bind:to="{path: '/displayPictures/index'}">
+                     Display Picture
                   </router-link>
                </li>
                <li class="active">
-                  <strong>{{blog.title}}</strong>
+                  <strong>Create</strong>
                </li>
             </ol>
          </div>
@@ -32,18 +32,6 @@
                       <div class="panel-body">
                           <fieldset class="form-horizontal">
                               <div class="form-group">
-                                  <label class="col-sm-2 control-label">Title:</label>
-                                  <div class="col-sm-10">
-                                      <input type="text" class="form-control" v-model="blog.title">
-                                  </div>
-                              </div>
-                              <div class="form-group">
-                                  <label class="col-sm-2 control-label">Content:</label>
-                                  <div class="col-sm-10">
-                                       <editor api-key="API_KEY" :init="{plugins: 'wordcount'}" v-model="blog.content"></editor>
-                                  </div>
-                              </div>
-                              <div class="form-group">
                                   <label class="col-sm-2 control-label">Image:</label>
                                   <!-- <div class="col-lg-2 col-md-2">
                                      <img id="holder" style="margin-top:15px;max-height:100px;">
@@ -55,7 +43,7 @@
                                               <i class="fa fa-picture-o"></i> Choose
                                            </a>
                                         </span>
-                                        <input id="thumbnail" class="form-control" type="text" v-model="blog.image">
+                                        <input id="thumbnail" class="form-control" type="text" v-model="displayPicture.image">
                                      </div>
                                   </div>
                               </div>
@@ -63,7 +51,7 @@
                           <button type="button" class="btn btn-primary pull-right btn-sm" data-toggle="tooltip" data-placement="top" @click="create" style="margin-left:10px">
                           <i class="fa fa-save"></i> Save
                           </button>
-                          <router-link v-bind:to="{path: '/blog/index'}" class="btn btn-sm btn-default pull-right">
+                          <router-link v-bind:to="{path: '/displayPictures/index'}" class="btn btn-sm btn-default pull-right">
                             <i class="fa fa-arrow-left"></i> Back
                          </router-link>
                         </div>
@@ -82,25 +70,19 @@
          $('#lfm2').filemanager('file', {prefix: route_prefix});
       },
 
-      components: {
-          'editor': Editor
-      },
-
       data: function () {
          return {
-            blog: {
-               title: '',
-               content: '',
+            displayPicture: {
                image:   ''
             }
          }
       },
       methods: {
          create: function() {
-            let uri = 'http://localhost:8000/api/blogs/';
-            Axios.post(uri, this.blog).then((response) => {
+            let uri = 'http://localhost:8000/api/displayPictures/';
+            Axios.post(uri, this.displayPicture).then((response) => {
                // console.log(response.data);
-               this.$router.push({name: 'BlogIndex'});
+               this.$router.push({name: 'DisplayPictureIndex'});
             })
          }
       }

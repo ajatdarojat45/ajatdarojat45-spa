@@ -65,7 +65,7 @@
 
       methods:{
          fetchData () {
-            axios.get('http://localhost:8000/gift/')
+            axios.get('http://localhost:8000/api/getGiftsActive/')
                .then((res) => {
                   this.gifts = res.data;
                })

@@ -72,7 +72,7 @@
          }
       },
       created: function(){
-         let uri = 'http://localhost:8000/podcast/'+this.$route.params.slug;
+         let uri = 'http://localhost:8000/api/getPodcast/'+this.$route.params.slug;
          Axios.get(uri).then((response) => {
            this.podcast = response.data;
            console.log(response.data);

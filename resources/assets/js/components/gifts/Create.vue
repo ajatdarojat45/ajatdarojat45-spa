@@ -88,7 +88,7 @@
 
       methods: {
          create: function() {
-            let uri = 'http://localhost:8000/gifts/';
+            let uri = 'http://localhost:8000/api/gifts/';
             Axios.post(uri, this.gift).then((response) => {
                this.$router.push({name: 'GiftIndex'})
             })

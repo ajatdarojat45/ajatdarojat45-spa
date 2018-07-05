@@ -95,4 +95,9 @@ class GiftController extends Controller
          return response()->json(['status'=>'error', 'msg'=>'Data not found']);
       }
    }
+
+   public function getGiftsActive()
+   {
+      return Gift::where('stat', '1')->orderBy('created_at', 'desc')->get();
+   }
 }

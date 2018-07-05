@@ -75,7 +75,7 @@
          }
       },
       created: function(){
-         let uri = 'http://localhost:8000/blogs/'+this.$route.params.id;
+         let uri = 'http://localhost:8000/api/blogs/'+this.$route.params.id;
          Axios.get(uri).then((response) => {
            this.blog = response.data;
            console.log(response.data);

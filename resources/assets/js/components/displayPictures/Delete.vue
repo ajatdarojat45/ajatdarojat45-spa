@@ -1,8 +1,8 @@
-<template>
+<template id="post-delete">
    <div>
       <div class="row wrapper border-bottom white-bg page-heading">
-         <div class="col-sm-4">
-            <h2>Podcast</h2>
+         <div>
+            <h2>Blog</h2>
             <ol class="breadcrumb">
                <li>
                   <router-link v-bind:to="{path: '/dashboard'}">
@@ -10,12 +10,12 @@
                   </router-link>
                </li>
                <li>
-                  <router-link v-bind:to="{path: '/podcast/index'}">
-                     Podcast
+                  <router-link v-bind:to="{path: '/displayPicture/index'}">
+                     Display Picture
                   </router-link>
                </li>
                <li class="active">
-                  <strong>{{podcast.name}}</strong>
+                  <strong>{{displayPicture.image}}</strong>
                </li>
             </ol>
          </div>
@@ -29,11 +29,12 @@
                      Delete Confirmation
                   </div>
                   <div class="panel-body text-center">
-                     <h3>{{ podcast.name  }}</h3>
+                     <img v-bind:src="displayPicture.image" alt="" width="200" class="img-circle">
+                     <h3>{{ displayPicture.image  }}</h3>
                      <form v-on:submit.prevent = "destroy">
                         <h3>Are You Sure?</h3>
                         <p>Your will not be able to recover this imaginary data!</p>
-                        <router-link class="btn btn-sm btn-default" v-bind:to="'/podcast/index'"><i class="fa fa-arrow-left"></i> Back</router-link>
+                        <router-link class="btn btn-sm btn-default" v-bind:to="'/displayPicture/index'"><i class="fa fa-arrow-left"></i> Back</router-link>
                         <button class="btn btn-sm btn-danger" type="submit" name="button"><i class="fa fa-trash"></i> Delete</button>
                      </form>
                   </div>
@@ -51,23 +52,22 @@
 export default {
    data: function () {
       return {
-         podcast: {
-            name: '',
-            description: ''
+         displayPicture: {
+            image: ''
          }
       }
    },
    created: function(){
-      let uri = 'http://localhost:8000/api/podcasts/'+this.$route.params.id+'/edit';
+      let uri = 'http://localhost:8000/api/displayPictures/'+this.$route.params.id+'/edit';
       Axios.get(uri).then((response) => {
-         this.podcast = response.data;
+         this.displayPicture = response.data;
       });
    },
    methods: {
       destroy: function() {
-         let uri = 'http://localhost:8000/api/podcasts/'+this.$route.params.id;
-         Axios.delete(uri, this.podcast).then((response) => {
-            this.$router.push({name: 'PodcastIndex'})
+         let uri = 'http://localhost:8000/api/displayPictures/'+this.$route.params.id;
+         Axios.delete(uri, this.displayPicture).then((response) => {
+            this.$router.push({name: 'DisplayPictureIndex'})
          })
       }
    }

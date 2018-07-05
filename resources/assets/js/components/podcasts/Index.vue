@@ -85,7 +85,7 @@
 
       methods:{
          fetchData () {
-            axios.get('http://localhost:8000/podcasts/')
+            axios.get('http://localhost:8000/api/podcasts/')
                .then((res) => {
                   this.podcasts = res.data
                })
@@ -95,7 +95,7 @@
          },
 
          toggleStat(podcast) {
-            let uri = 'http://localhost:8000/podcasts/toggleStat/'+podcast.id;
+            let uri = 'http://localhost:8000/api/podcasts/toggleStat/'+podcast.id;
             Axios.get(uri, this.podcast).then((response) => {
                podcast.stat = !podcast.stat
                toastr.success('Podcast stat updated', 'Success');

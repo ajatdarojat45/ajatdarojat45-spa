@@ -25,6 +25,11 @@
                   </router-link>
                </li>
                <li>
+                  <router-link v-bind:to="{path: '/displayPicture/index'}">
+                     <i class="fa fa-image"></i> <span class="nav-label">Display Picture</span>
+                  </router-link>
+               </li>
+               <li>
                   <router-link v-bind:to="{path: '/gift/index'}">
                      <i class="fa fa-gift"></i> <span class="nav-label">Gift</span>
                   </router-link>

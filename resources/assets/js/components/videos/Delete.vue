@@ -58,14 +58,14 @@ export default {
       }
    },
    created: function(){
-      let uri = 'http://localhost:8000/videos/'+this.$route.params.id+'/edit';
+      let uri = 'http://localhost:8000/api/videos/'+this.$route.params.id+'/edit';
       Axios.get(uri).then((response) => {
          this.video = response.data;
       });
    },
    methods: {
       destroy: function() {
-         let uri = 'http://localhost:8000/videos/'+this.$route.params.id;
+         let uri = 'http://localhost:8000/api/videos/'+this.$route.params.id;
          Axios.delete(uri, this.video).then((response) => {
             this.$router.push({name: 'VideoIndex'})
          })

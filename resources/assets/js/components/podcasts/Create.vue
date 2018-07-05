@@ -79,7 +79,7 @@
 
       methods: {
          create: function() {
-            let uri = 'http://localhost:8000/podcasts/';
+            let uri = 'http://localhost:8000/api/podcasts/';
             Axios.post(uri, this.podcast).then((response) => {
                this.$router.push({name: 'PodcastIndex'})
             })

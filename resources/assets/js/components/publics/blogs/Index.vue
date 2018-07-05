@@ -56,7 +56,7 @@
 
       methods:{
          fetchData () {
-            axios.get('http://localhost:8000/blog/')
+            axios.get('http://localhost:8000/api/getBlogsActive/')
                .then((res) => {
                   this.blogs = res.data;
                   console.log(res.data)

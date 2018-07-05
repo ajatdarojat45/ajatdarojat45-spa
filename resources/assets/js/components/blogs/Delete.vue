@@ -53,14 +53,14 @@ export default {
       return {blog: {title: '', content: ''}}
    },
    created: function(){
-      let uri = 'http://localhost:8000/blogs/'+this.$route.params.id+'/edit';
+      let uri = 'http://localhost:8000/api/blogs/'+this.$route.params.id+'/edit';
       Axios.get(uri).then((response) => {
          this.blog = response.data;
       });
    },
    methods: {
       destroy: function() {
-         let uri = 'http://localhost:8000/blogs/'+this.$route.params.id;
+         let uri = 'http://localhost:8000/api/blogs/'+this.$route.params.id;
          Axios.delete(uri, this.blog).then((response) => {
             this.$router.push({name: 'BlogIndex'})
          })

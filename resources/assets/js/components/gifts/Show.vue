@@ -76,7 +76,7 @@
          }
       },
       created: function(){
-         let uri = 'http://localhost:8000/gifts/'+this.$route.params.id;
+         let uri = 'http://localhost:8000/api/gifts/'+this.$route.params.id;
          Axios.get(uri).then((response) => {
            this.gift = response.data;
            console.log(response.data);

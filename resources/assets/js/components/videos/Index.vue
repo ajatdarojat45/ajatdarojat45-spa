@@ -85,7 +85,7 @@
 
       methods:{
          fetchData () {
-            axios.get('http://localhost:8000/videos/')
+            axios.get('http://localhost:8000/api/videos/')
                .then((res) => {
                   this.videos = res.data
                })
@@ -95,7 +95,7 @@
          },
 
          toggleStat(video) {
-            let uri = 'http://localhost:8000/videos/toggleStat/'+video.id;
+            let uri = 'http://localhost:8000/api/videos/toggleStat/'+video.id;
             Axios.get(uri, this.video).then((response) => {
                video.stat = !video.stat
                toastr.success('Video stat updated', 'Success');

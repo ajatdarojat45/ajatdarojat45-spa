@@ -100,4 +100,14 @@ class BlogController extends Controller
          return response()->json(['status'=>'error', 'msg'=>'Data not found']);
       }
    }
+
+   public function getBlogActive($value='')
+   {
+      return Blog::where('stat', '1')->orderBy('created_at', 'desc')->get();
+   }
+
+   public function getBlog($slug)
+   {
+      return Blog::where('slug', $slug)->first();
+   }
 }
