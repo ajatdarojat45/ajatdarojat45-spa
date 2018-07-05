@@ -72,7 +72,7 @@
          }
       },
       created: function(){
-         let uri = 'http://localhost:8000/video/'+this.$route.params.slug;
+         let uri = 'http://localhost:8000/api/getVideo/'+this.$route.params.slug;
          Axios.get(uri).then((response) => {
            this.video = response.data;
            console.log(res.data);

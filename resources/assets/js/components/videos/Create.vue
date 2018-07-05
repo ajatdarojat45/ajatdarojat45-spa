@@ -79,7 +79,7 @@
 
       methods: {
          create: function() {
-            let uri = 'http://localhost:8000/videos/';
+            let uri = 'http://localhost:8000/api/videos/';
             Axios.post(uri, this.video).then((response) => {
                this.$router.push({name: 'VideoIndex'})
             })

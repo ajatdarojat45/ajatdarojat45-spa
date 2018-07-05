@@ -58,14 +58,14 @@ export default {
       }
    },
    created: function(){
-      let uri = 'http://localhost:8000/gifts/'+this.$route.params.id+'/edit';
+      let uri = 'http://localhost:8000/api/gifts/'+this.$route.params.id+'/edit';
       Axios.get(uri).then((response) => {
          this.gift = response.data;
       });
    },
    methods: {
       destroy: function() {
-         let uri = 'http://localhost:8000/gifts/'+this.$route.params.id;
+         let uri = 'http://localhost:8000/api/gifts/'+this.$route.params.id;
          Axios.delete(uri, this.gift).then((response) => {
             this.$router.push({name: 'GiftIndex'})
          })

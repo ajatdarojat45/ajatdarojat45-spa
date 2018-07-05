@@ -95,7 +95,7 @@ export default{
    },
 
    created: function(){
-      let uri = 'http://localhost:8000/blogs/'+this.$route.params.id+'/edit';
+      let uri = 'http://localhost:8000/api/blogs/'+this.$route.params.id+'/edit';
       Axios.get(uri).then((response) => {
          this.blog = response.data;
       });
@@ -103,7 +103,7 @@ export default{
 
    methods: {
       update: function() {
-         let uri = 'http://localhost:8000/blogs/'+this.$route.params.id;
+         let uri = 'http://localhost:8000/api/blogs/'+this.$route.params.id;
          Axios.patch(uri, this.blog).then((response) => {
             toastr.success('Data saved', 'Success')
             this.$router.push({name: 'BlogEdit', params: {id: blog.id}})

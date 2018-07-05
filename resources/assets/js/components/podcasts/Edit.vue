@@ -85,7 +85,7 @@ export default{
    },
 
    created: function(){
-      let uri = 'http://localhost:8000/podcasts/'+this.$route.params.id+'/edit';
+      let uri = 'http://localhost:8000/api/podcasts/'+this.$route.params.id+'/edit';
       Axios.get(uri).then((response) => {
          this.podcast = response.data;
       });
@@ -93,7 +93,7 @@ export default{
 
    methods: {
       update: function() {
-         let uri = 'http://localhost:8000/podcasts/'+this.$route.params.id;
+         let uri = 'http://localhost:8000/api/podcasts/'+this.$route.params.id;
          Axios.patch(uri, this.podcast).then((response) => {
             toastr.success('Data saved', 'Success')
             this.$router.push({name: 'PodcastEdit', params: {id: podcast.id}})

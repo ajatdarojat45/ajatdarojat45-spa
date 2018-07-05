@@ -86,14 +86,14 @@ export default{
       }
    },
    created: function(){
-      let uri = 'http://localhost:8000/gifts/'+this.$route.params.id+'/edit';
+      let uri = 'http://localhost:8000/api/gifts/'+this.$route.params.id+'/edit';
       Axios.get(uri).then((response) => {
          this.gift = response.data;
       });
    },
    methods: {
       update: function() {
-         let uri = 'http://localhost:8000/gifts/'+this.$route.params.id;
+         let uri = 'http://localhost:8000/api/gifts/'+this.$route.params.id;
          Axios.patch(uri, this.gift).then((response) => {
             toastr.success('Data saved', 'Success')
             this.$router.push({name: 'GiftEdit', params: {id: gift.id}})

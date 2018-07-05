@@ -96,4 +96,14 @@ class VideoController extends Controller
          return response()->json(['status'=>'error', 'msg'=>'Data not found']);
       }
    }
+
+   public function getVideosActive()
+   {
+      return Video::where('stat', '1')->orderBy('created_at', 'desc')->get();
+   }
+
+   public function getVideo($slug)
+   {
+      return Video::where('slug', $slug)->first();
+   }
 }

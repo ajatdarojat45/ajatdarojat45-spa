@@ -83,7 +83,7 @@
 
       methods:{
          fetchData () {
-            axios.get('http://localhost:8000/blogs/')
+            axios.get('http://localhost:8000/api/blogs/')
                .then((res) => {
                   this.blogs = res.data
                })
@@ -93,7 +93,7 @@
          },
 
          toggleStat(blog) {
-            let uri = 'http://localhost:8000/blogs/toggleStat/'+blog.id;
+            let uri = 'http://localhost:8000/api/blogs/toggleStat/'+blog.id;
             Axios.get(uri, this.blog).then((response) => {
                blog.stat = !blog.stat
                toastr.success('Blog stat updated', 'Success');

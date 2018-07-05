@@ -65,7 +65,7 @@
 
       methods:{
          fetchData () {
-            axios.get('http://localhost:8000/video/')
+            axios.get('http://localhost:8000/api/getVideosActive/')
                .then((res) => {
                   this.videos = res.data;
                })

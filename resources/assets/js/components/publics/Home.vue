@@ -4,7 +4,7 @@
          <div class="content">
             <div class="title m-b-md">
                <center>
-                  <img src="" alt="" class="img-circle img-responsive" width="200px"><br>
+                  <img :src="displayPicture.image" alt="" class="img-circle img-responsive" width="200px"><br>
                </center>
                <p>
                   <strong>
@@ -88,12 +88,32 @@
 
 <script>
    export default {
-      methods: {
+      mounted() {
+         this.fetchData()
+      },
+      data(){
+         return{
+            displayPicture: '',
+         }
+      },
+
+      methods:{
+         fetchData () {
+            axios.get('http://localhost:8000/api/getDisplayPictureActive/')
+               .then((res) => {
+                  this.displayPicture = res.data;
+                  console.log(this.displayPicture);
+               })
+               .catch((err) => {
+                  console.log(err)
+               })
+         },
+
          login: function() {
             window.location.replace('login');
-         }
+         },
       }
-   }
+    }
 </script>
 <style>
    html,

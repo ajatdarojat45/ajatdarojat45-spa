@@ -83,16 +83,16 @@ export default{
    components: {
        'editor': Editor
    },
-   
+
    created: function(){
-      let uri = 'http://localhost:8000/videos/'+this.$route.params.id+'/edit';
+      let uri = 'http://localhost:8000/api/videos/'+this.$route.params.id+'/edit';
       Axios.get(uri).then((response) => {
          this.video = response.data;
       });
    },
    methods: {
       update: function() {
-         let uri = 'http://localhost:8000/videos/'+this.$route.params.id;
+         let uri = 'http://localhost:8000/api/videos/'+this.$route.params.id;
          Axios.patch(uri, this.video).then((response) => {
             toastr.success('Data saved', 'Success')
             this.$router.push({name: 'PodcastEdit', params: {id: video.id}})

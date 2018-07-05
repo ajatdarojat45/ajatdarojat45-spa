@@ -45,8 +45,8 @@
                         <tr v-for="(gift, index) in gifts" :key="gift.id">
                            <td class="text-center">{{  index + 1}}</td>
                            <td>{{gift.name}}</td>
-                           <td class="text-center">{{gift.link}}</td>
-                           <td class="text-center">{{gift.documentation_link}}</td>
+                           <td class="text-left">{{gift.link}}</td>
+                           <td class="text-left">{{gift.documentation_link}}</td>
                            <td class="text-center">
                               <a href="#" class="btn btn-primary btn-sm btn-outline" v-on:click.prevent = "toggleStat(gift)" v-if="gift.stat == 1">
                                  <i class="fa fa-toggle-on"></i>
@@ -85,7 +85,7 @@
 
       methods:{
          fetchData () {
-            axios.get('http://localhost:8000/gifts/')
+            axios.get('http://localhost:8000/api/gifts/')
                .then((res) => {
                   this.gifts = res.data
                })
@@ -95,7 +95,7 @@
          },
 
          toggleStat(gift) {
-            let uri = 'http://localhost:8000/gifts/toggleStat/'+gift.id;
+            let uri = 'http://localhost:8000/api/gifts/toggleStat/'+gift.id;
             Axios.get(uri, this.gift).then((response) => {
                gift.stat = !gift.stat
                toastr.success('Gift stat updated', 'Success');

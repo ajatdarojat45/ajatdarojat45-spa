@@ -23,6 +23,11 @@ const BlogShow    =  Vue.component('BlogShow', require('./components/blogs/Show.
 const BlogIndex   =  Vue.component('BlogIndex', require('./components/blogs/Index.vue'));
 const BlogCreate  =  Vue.component('BlogCreate', require('./components/blogs/Create.vue'));
 const BlogDelete  =  Vue.component('BlogDelete', require('./components/blogs/Delete.vue'));
+// displayPicture
+const DisplayPictureIndex        =  Vue.component('DisplayPictureIndex', require('./components/DisplayPictures/Index.vue'));
+const DisplayPictureCreate       =  Vue.component('DisplayPictureCreate', require('./components/DisplayPictures/Create.vue'));
+const DisplayPictureDelete       =  Vue.component('DisplayPictureDelete', require('./components/DisplayPictures/Delete.vue'));
+const DisplayPictureToggleStat   =  Vue.component('DisplayPictureToggleStat', require('./components/DisplayPictures/ToggleStat.vue'));
 // gift
 const GiftEdit    =  Vue.component('GiftEdit', require('./components/gifts/Edit.vue'));
 const GiftShow    =  Vue.component('GiftShow', require('./components/gifts/Show.vue'));
@@ -119,6 +124,27 @@ const routes = [
       name: 'BlogShow',
       path: '/blog/show/:id',
       component: BlogShow
+   },
+   // displayPicture
+   {
+      name: 'DisplayPictureIndex',
+      path: '/displayPicture/index',
+      component: DisplayPictureIndex
+   },
+   {
+      name: 'DisplayPictureCreate',
+      path: '/displayPicture/create',
+      component: DisplayPictureCreate
+   },
+   {
+      name: 'DisplayPictureDelete',
+      path: '/displayPicture/delete/:id',
+      component: DisplayPictureDelete
+   },
+   {
+      name: 'DisplayPictureToggleStat',
+      path: '/displayPicture/toggleStat/:id',
+      component: DisplayPictureToggleStat
    },
    // gifts
    {

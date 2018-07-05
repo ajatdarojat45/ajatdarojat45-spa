@@ -69,7 +69,7 @@
 
       methods:{
          fetchData () {
-            axios.get('http://localhost:8000/podcast/')
+            axios.get('http://localhost:8000/api/getPodcastsActive/')
                .then((res) => {
                   this.podcasts = res.data;
                })
