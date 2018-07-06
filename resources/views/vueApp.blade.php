@@ -24,6 +24,17 @@
    <link rel="stylesheet" href="{{ asset('datatables/dataTables.bootstrap.css') }}">
    <link href="{{ asset('inspinia/css/plugins/blueimp/css/blueimp-gallery.min.css') }}" rel="stylesheet">
    <link rel="shortcut icon" type="image/x-icon" href="{{asset('profile.jpg')}}" />
+
+   <!-- Global site tag (gtag.js) - Google Analytics -->
+   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-119525260-1"></script>
+   <script>
+     window.dataLayer = window.dataLayer || [];
+     function gtag(){dataLayer.push(arguments);}
+     gtag('js', new Date());
+
+     gtag('config', 'UA-119525260-1');
+   </script>
+
 </head>
 
 <body>

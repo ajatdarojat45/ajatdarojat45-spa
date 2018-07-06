@@ -50935,7 +50935,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-   mounted: function mounted() {}
+   methods: {
+      logout: function logout() {
+         axios.post('http://localhost:8000/logout/').then(function (res) {
+            window.location.replace('/');
+         }).catch(function (err) {
+            console.log(err);
+         });
+      }
+   }
 });
 
 /***/ }),
@@ -51088,7 +51096,28 @@ var render = function() {
       "div",
       { staticClass: "gray-bg", attrs: { id: "page-wrapper" } },
       [
-        _vm._m(1),
+        _c("div", { staticClass: "row border-bottom" }, [
+          _c(
+            "nav",
+            {
+              staticClass: "navbar navbar-static-top  ",
+              staticStyle: { "margin-bottom": "0" },
+              attrs: { role: "navigation" }
+            },
+            [
+              _vm._m(1),
+              _vm._v(" "),
+              _c("ul", { staticClass: "nav navbar-top-links navbar-right" }, [
+                _c("li", [
+                  _c("a", { on: { click: _vm.logout } }, [
+                    _c("i", { staticClass: "fa fa-sign-out" }),
+                    _vm._v(" Logout")
+                  ])
+                ])
+              ])
+            ]
+          )
+        ]),
         _vm._v(" "),
         _c("router-view"),
         _vm._v(" "),
@@ -51129,50 +51158,33 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row border-bottom" }, [
+    return _c("div", { staticClass: "navbar-header" }, [
       _c(
-        "nav",
+        "a",
         {
-          staticClass: "navbar navbar-static-top  ",
-          staticStyle: { "margin-bottom": "0" },
-          attrs: { role: "navigation" }
+          staticClass: "navbar-minimalize minimalize-styl-2 btn btn-primary ",
+          attrs: { href: "#" }
+        },
+        [_c("i", { staticClass: "fa fa-bars" })]
+      ),
+      _vm._v(" "),
+      _c(
+        "form",
+        {
+          staticClass: "navbar-form-custom",
+          attrs: { role: "search", action: "search_results.html" }
         },
         [
-          _c("div", { staticClass: "navbar-header" }, [
-            _c(
-              "a",
-              {
-                staticClass:
-                  "navbar-minimalize minimalize-styl-2 btn btn-primary ",
-                attrs: { href: "#" }
-              },
-              [_c("i", { staticClass: "fa fa-bars" })]
-            ),
-            _vm._v(" "),
-            _c(
-              "form",
-              {
-                staticClass: "navbar-form-custom",
-                attrs: { role: "search", action: "search_results.html" }
-              },
-              [
-                _c("div", { staticClass: "form-group" }, [
-                  _c("input", {
-                    staticClass: "form-control",
-                    attrs: {
-                      type: "text",
-                      placeholder: "Search for something...",
-                      name: "top-search",
-                      id: "top-search"
-                    }
-                  })
-                ])
-              ]
-            )
-          ]),
-          _vm._v(" "),
-          _c("ul", { staticClass: "nav navbar-top-links navbar-right" }, [
-            _c("li")
+          _c("div", { staticClass: "form-group" }, [
+            _c("input", {
+              staticClass: "form-control",
+              attrs: {
+                type: "text",
+                placeholder: "Search for something...",
+                name: "top-search",
+                id: "top-search"
+              }
+            })
           ])
         ]
       )
@@ -55207,7 +55219,7 @@ var render = function() {
     _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "col-lg-12 animated fadeInRight" }, [
         _c("div", { staticClass: "ibox-content" }, [
-          _c("div", { staticClass: "panel panel-warning" }, [
+          _c("div", { staticClass: "panel panel-primary" }, [
             _c("div", { staticClass: "panel-heading text-center" }, [
               _vm._v("\n                  Toggle Confirmation\n               ")
             ]),

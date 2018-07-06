@@ -24,7 +24,7 @@
       <div class="row">
          <div class="col-lg-12 animated fadeInRight">
             <div class="ibox-content">
-               <div class="panel panel-warning">
+               <div class="panel panel-primary">
                   <div class="panel-heading text-center">
                      Toggle Confirmation
                   </div>

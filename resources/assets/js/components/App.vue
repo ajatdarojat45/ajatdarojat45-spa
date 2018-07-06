@@ -65,7 +65,7 @@
                </div>
                <ul class="nav navbar-top-links navbar-right">
                   <li>
-
+                     <a v-on:click="logout"><i class="fa fa-sign-out"></i> Logout</a>
                   </li>
                </ul>
             </nav>
@@ -85,9 +85,15 @@
 </template>
 
 <script>
-export default {
-   mounted() {
-      
+   export default {
+      methods:{
+         logout () {
+            axios.post('http://localhost:8000/logout/').then((res) => {
+               window.location.replace('/');
+            }).catch((err) => {
+               console.log(err)
+            })
+         }
+      }
    }
-}
 </script>

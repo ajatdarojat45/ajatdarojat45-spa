@@ -15,6 +15,17 @@
    <link href="{{ asset('inspinia/font-awesome/css/font-awesome.css') }}" rel="stylesheet">
 
    <link rel="shortcut icon" type="image/x-icon" href="{{asset('profile.jpg')}}" />
+
+   <!-- Global site tag (gtag.js) - Google Analytics -->
+   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-119525260-1"></script>
+   <script>
+     window.dataLayer = window.dataLayer || [];
+     function gtag(){dataLayer.push(arguments);}
+     gtag('js', new Date());
+
+     gtag('config', 'UA-119525260-1');
+   </script>
+
    <!-- Styles -->
    <style>
       html,
@@ -106,7 +117,6 @@
             <strong> lazyCode - <i class="fa fa-code"></i> dengan <i class="fa fa-heart" style="color:red"></i></strong>
          </p>
          </strong>
-         <script src="https://www.w3counter.com/tracker.js?id=117040"></script>
       </div>
    </div>
 
