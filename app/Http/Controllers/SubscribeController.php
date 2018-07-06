@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Events\SubscribeEvent;
 use App\Subscribe;
 
 class SubscribeController extends Controller
@@ -26,30 +27,37 @@ class SubscribeController extends Controller
       ]);
 
       // get data
-      $subsscriber = Subscribe::where('email', $request->email)->first();
+      $subscriber = Subscribe::where('email', $request->email)->first();
 
       // cek data kosong ataung engga
-      if (empty($subsscriber)) {
+      if (empty($subscriber)) {
          // insert data to db
-         $subsscribe = Subscribe::create([
+         $subscribe = Subscribe::create([
             'email'  => $request->email,
          ]);
+
+         event(new SubscribeEvent($subscribe));
          return 'subscribe berhasil';
+
       }else {
          if ($request->type == 'subscribe') {
-            if ($subsscriber->stat == 1) {
+            if ($subscriber->stat == 1) {
                return 'sudah subscribe';
             }else{
-               $subsscriber->stat = 1;
-               $subsscriber->update();
+               $subscriber->stat = 1;
+               $subscriber->update();
+
+               event(new SubscribeEvent($subscriber));
                return 'subscribe berhasil';
             }
          }else {
-            if ($subsscriber->stat == 0) {
+            if ($subscriber->stat == 0) {
                return 'sudah unsubscribe';
             }else{
-               $subsscriber->stat = 0;
-               $subsscriber->update();
+               $subscriber->stat = 0;
+               $subscriber->update();
+
+               event(new SubscribeEvent($subscriber));
                return 'unsubscribe berhasil';
             }
          }
@@ -79,5 +87,20 @@ class SubscribeController extends Controller
    public function toggleStat($id)
    {
 
+   }
+
+   public function subscribe($email, $type)
+   {
+      $subscribe = Subscribe::where('email', $email)->first();
+
+      if ($type == 'subscribe') {
+         $subscribe->stat = 1;
+         $subscribe->update();
+      }else {
+         $subscribe->stat = 0;
+         $subscribe->update();
+      }
+
+      return view('mails.subscribes.subscribe', compact('subscribe'));
    }
 }

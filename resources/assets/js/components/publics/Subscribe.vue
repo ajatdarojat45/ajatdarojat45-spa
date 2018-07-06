@@ -17,23 +17,19 @@
                <div class="col-lg-4 col-md-4">
                   <div class="alert alert-success" v-if="notif == 'subscribe berhasil'">
                      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                     <strong>Subscribe success! Terimakasih sudah subscribe.</strong>
+                     <strong>Subscribe success! Selamat kamu berhasil berlangganan.</strong>
                   </div>
-                  <div class="alert alert-success" v-if="notif == 'sudah subscribe'">
+                  <div class="alert alert-warning" v-if="notif == 'sudah subscribe'">
                      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                      <strong>Kamu sudah subscribe.</strong>
                   </div>
-                  <div class="alert alert-success" v-if="notif == 'sudah unsubscribe'">
+                  <div class="alert alert-warning" v-if="notif == 'sudah unsubscribe'">
                      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                      <strong>Kamu sudah unsubscribe.</strong>
                   </div>
-                  <div class="alert alert-success" v-if="notif == 'unsubscribe berhasil'">
+                  <div class="alert alert-danger" v-if="notif == 'unsubscribe berhasil'">
                      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                     <strong>Unubscribe success! Kami harap kamu bisa berlangganan lagi.</strong>
-                  </div>
-                  <div class="alert alert-success" v-else>
-                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                     <strong>Subscribe success! Terimakasih sudah subscribe.</strong>
+                     <strong>Unubscribe success! Terimakasih kamu sudah berlangganan.</strong>
                   </div>
                   <strong>
                      <form v-on:submit.prevent = "create">
@@ -42,7 +38,7 @@
                               <input type="email" placeholder="Masukan email nya disini." v-model="subscribe.email" class="form-control input-sm" required>
                               <div class="input-group-btn">
                                  <button class="btn btn-danger btn-sm" type="submit">
-                                    <strong>Subscribe</strong>
+                                    <strong>Unsubscribe</strong>
                                  </button>
                               </div>
                            </div>
@@ -77,13 +73,12 @@
                email: '',
                type: 'unsubscribe',
             },
-            notif: false,
+            notif: 'subscribe berhasil',
          }
       },
 
       methods:{
          create() {
-            console.log(this.subscribe);
             let uri = 'http://localhost:8000/api/subscribes/';
             Axios.post(uri, this.subscribe).then((response) => {
                this.notif = response.data;

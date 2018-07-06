@@ -1,7 +1,8 @@
 <template id="post">
    <div>
       <div class="row wrapper border-bottom white-bg page-heading">
-         <div>
+         <div class="">
+            <h2>Podcast</h2>
             <ol class="breadcrumb">
                <li>
                   <router-link v-bind:to="{path: '/dashboard'}">
@@ -9,7 +10,7 @@
                   </router-link>
                </li>
                <li>
-                  <router-link v-bind:to="{path: '/podcast/index'}">
+                  <router-link v-bind:to="{path: '/podcast'}">
                      Podcast
                   </router-link>
                </li>
@@ -30,33 +31,33 @@
                      </router-link>
                   </div>
                   <div class="pull-right">
-                     <button class="btn btn-white btn-xs" type="button">Model</button>
+                     <!-- <button class="btn btn-white btn-xs" type="button">Model</button>
                      <button class="btn btn-white btn-xs" type="button">Publishing</button>
-                     <button class="btn btn-white btn-xs" type="button">Modern</button>
+                     <button class="btn btn-white btn-xs" type="button">Modern</button> -->
                   </div>
                   <div class="text-center article-title">
                      <span class="text-muted"><i class="fa fa-clock-o"></i> {{podcast.created_at}}</span>
                      <h1><b>{{podcast.name}}</b> </h1>
                   </div>
+                  <p>{{podcast.description}}</p>
                   <div class="text-center" v-html="podcast.embed">
                      {{ podcast.embed }}
                   </div><br>
-                  <p>{{podcast.description}}</p>
                   <hr>
                   <div class="row">
                      <div class="col-md-6">
-                        <h5>Tags:</h5>
+                        <!-- <h5>Tags:</h5>
                         <button class="btn btn-primary btn-xs" type="button">Model</button>
-                        <button class="btn btn-white btn-xs" type="button">Publishing</button>
+                        <button class="btn btn-white btn-xs" type="button">Publishing</button> -->
                      </div>
                      <div class="col-md-6">
                         <div class="small text-right">
                             <h5>Stats:</h5>
-                            <div> <i class="fa fa-comments-o"> </i> 56 comments </div>
-                            <i class="fa fa-eye"> </i> 144 views
+                            <!-- <div> <i class="fa fa-comments-o"> </i> 56 comments </div> -->
+                            <i class="fa fa-eye"> </i> {{podcast.visitor}} views
                         </div>
                      </div>
-                   </div>
+                  </div>
                </div>
             </div>
          </div>

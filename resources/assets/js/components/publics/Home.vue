@@ -70,9 +70,6 @@
                               </div>
                            </strong>
                         </form>
-                        <router-link v-bind:to="{path: '/subscribe'}">
-                           subscribe
-                        </router-link>
                      </div>
                   </div>
                </div>

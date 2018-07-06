@@ -19,7 +19,7 @@ class SendSubscriberEmailAfterPodcastCreatedListener
 
    public function handle(PodcastCreatedEvent $event)
    {
-      $subscribers = Subscribe::where('stat', 0)->get();
+      $subscribers = Subscribe::where('stat', 1)->get();
 
       foreach ($subscribers as $subscriber) {
          Mail::to($subscriber->email)->send(new SendSubscriberEmailAfterPodcastCreatedMail($event->podcast));

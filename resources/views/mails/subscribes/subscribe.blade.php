@@ -82,9 +82,15 @@
                   </strong>
                </div><br>
                 <div class="title m-b-md">
-                  <strong>
-                     Terimakasih temen-temen, sudah berlangganan. <i class="fa fa-smile-o"></i>
-                  </strong>
+                  @if ($subscribe->stat == 1)
+                     <strong>
+                        Selamat kamu berhasil berlangganan. <i class="fa fa-smile-o"></i>
+                     </strong>
+                  @else
+                     <strong>
+                        Terimakasih kamu sudah berlangganan. <i class="fa fa-smile-o"></i>
+                     </strong>
+                  @endif
                 </div>
                 <div class="container" style="margin-bottom:7px">
                   <div class="row">
@@ -93,9 +99,15 @@
 
                         </div>
                         <div class="col-lg-4 col-md-4">
-                           <strong>
-                              <a href="{{route('home')}}">Subscribe</a>
-                           </strong>
+                           @if ($subscribe->stat == 1)
+                              <strong>
+                                 <a href="{{route('subscribe', ['email' => $subscribe->email, 'type' => 'unsubscribe'])}}">Unsubscribe</a>
+                              </strong>
+                           @else
+                              <strong>
+                                 <a href="{{route('subscribe', ['email' => $subscribe->email, 'type' => 'subscribe'])}}">Subscribe again</a>
+                              </strong>
+                           @endif
                         </div>
                      </div>
                   </div>

@@ -19,7 +19,7 @@ class SendSubscriberEmailAfterVideoCreatedListener
 
    public function handle(VideoCreatedEvent $event)
    {
-      $subscribers = Subscribe::where('stat', 0)->get();
+      $subscribers = Subscribe::where('stat', 1)->get();
 
       foreach ($subscribers as $subscriber) {
          Mail::to($subscriber->email)->send(new SendSubscriberEmailAfterVideoCreatedMail($event->video));

@@ -22,6 +22,9 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\VideoCreatedEvent' => [
             'App\Listeners\SendSubscriberEmailAfterVideoCreatedListener',
         ],
+        'App\Events\SubscribeEvent' => [
+            'App\Listeners\SubscribeListener',
+        ],
     ];
 
     /**

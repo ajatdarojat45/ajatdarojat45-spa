@@ -31,27 +31,24 @@
                      </router-link>
                   </div>
                   <div class="pull-right">
-                     <button class="btn btn-white btn-xs" type="button">Model</button>
-                     <button class="btn btn-white btn-xs" type="button">Publishing</button>
-                     <button class="btn btn-white btn-xs" type="button">Modern</button>
                   </div>
                   <div class="text-center article-title">
                      <span class="text-muted"><i class="fa fa-clock-o"></i> {{blog.created_at}}</span>
                      <h1><b>{{blog.title}}</b> </h1>
                   </div>
-                  <p>{{blog.content}}</p>
+                  <div v-html="blog.content">{{blog.content}}</div>
                   <hr>
                   <div class="row">
                      <div class="col-md-6">
-                        <h5>Tags:</h5>
+                        <!-- <h5>Tags:</h5>
                         <button class="btn btn-primary btn-xs" type="button">Model</button>
-                        <button class="btn btn-white btn-xs" type="button">Publishing</button>
+                        <button class="btn btn-white btn-xs" type="button">Publishing</button> -->
                      </div>
                      <div class="col-md-6">
                         <div class="small text-right">
                             <h5>Stats:</h5>
-                            <div> <i class="fa fa-comments-o"> </i> 56 comments </div>
-                            <i class="fa fa-eye"> </i> 144 views
+                            <!-- <div> <i class="fa fa-comments-o"> </i> 56 comments </div> -->
+                            <i class="fa fa-eye"> </i> {{blog.visitor}} views
                         </div>
                      </div>
                    </div>

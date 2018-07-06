@@ -13,6 +13,8 @@ Route::get('/', function () {
    return view('vueApp2');
 })->name('home');
 
+Route::get('subscribe/{email}/{type}', 'SubscribeController@subscribe')->name('subscribe');
+
 Route::group(['middleware' => 'auth'], function(){
    Route::get('/dashboard', function () {
        return view('vueApp');
