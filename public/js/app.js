@@ -58515,11 +58515,11 @@ var render = function() {
                                 init: { plugins: "wordcount" }
                               },
                               model: {
-                                value: _vm.podcast.descriptiont,
+                                value: _vm.podcast.description,
                                 callback: function($$v) {
-                                  _vm.$set(_vm.podcast, "descriptiont", $$v)
+                                  _vm.$set(_vm.podcast, "description", $$v)
                                 },
-                                expression: "podcast.descriptiont"
+                                expression: "podcast.description"
                               }
                             })
                           ],

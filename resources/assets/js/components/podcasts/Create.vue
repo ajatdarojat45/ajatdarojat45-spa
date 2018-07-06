@@ -36,7 +36,7 @@
                                   <label class="col-sm-2 control-label">Description:</label>
                                   <div class="col-sm-10">
                                       <!-- <textarea class="form-control" name="" v-model="podcast.description"></textarea> -->
-                                      <editor api-key="API_KEY" :init="{plugins: 'wordcount'}" v-model="podcast.descriptiont"></editor>
+                                      <editor api-key="API_KEY" :init="{plugins: 'wordcount'}" v-model="podcast.description"></editor>
                                   </div>
                               </div>
                               <div class="form-group">

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Events\BlogCreatedEvent;
 use App\Blog;
 use Auth;
 
@@ -38,6 +39,8 @@ class BlogController extends Controller
          'content'      => $request->content,
          'image'        => $request->image,
       ]);
+
+      event(new BlogCreatedEvent($blog));
 
       return response()->json(['status' => 'success','msg'=>'post created successfully']);
    }

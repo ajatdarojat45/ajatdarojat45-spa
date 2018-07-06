@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Events\PodcastCreatedEvent;
 use App\Podcast;
 use Auth;
 
@@ -36,6 +37,8 @@ class PodcastController extends Controller
          'description'  => $request->description,
          'embed'        => $request->embed,
       ]);
+
+      event(new PodcastCreatedEvent($podcast));
 
       return response()->json(['status' => 'success','msg'=>'post created successfully']);
    }

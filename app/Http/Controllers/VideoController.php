@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Events\VideoCreatedEvent;
 use App\Video;
 use Auth;
 
@@ -36,6 +37,8 @@ class VideoController extends Controller
          'description'  => $request->description,
          'embed'        => $request->embed,
       ]);
+
+      event(new VideoCreatedEvent($video));
 
       return response()->json(['status' => 'success','msg'=>'post created successfully']);
    }
